@@ -1,0 +1,50 @@
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mix;
+
+.gallery {
+  width: 100%;
+  max-width: 1800px;
+
+  .gallery-photo-container {
+    flex-basis: 33.333%;
+    position: relative;
+
+    .child-element {
+      color: transparent;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    &:hover .image-class {
+      cursor: pointer;
+      opacity: 0;
+      transition: all 0.3s;
+    }
+    &:hover .child-element {
+      cursor: pointer;
+      color: #4c4c4c;
+      border-top: 1px solid #4c4c4c;
+      border-bottom: 1px solid #4c4c4c;
+    }
+
+    img {
+      width: 100%;
+      max-width: 600px;
+
+      .image-class {
+        opacity: 1;
+      }
+    }
+
+    @include mix.tablet-styles {
+      flex-basis: 50%;
+    }
+
+    @include mix.mobile-l-styles {
+      flex-basis: 100%;
+    }
+  }
+}
